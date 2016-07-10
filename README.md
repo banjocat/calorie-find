@@ -13,10 +13,13 @@ This is primarly a learning project
 * circle.yml for test and pushing to
 * Read ASCII data file into database for calorie data
 * 1 API endpoint to send list of data
+* User can put in multiple measurement types
 
 ### Extra credit
 * If multiple matches or mispelling send multiple options in JSON
 * UPC support
 
 ### Tech used
+* django
+* postgresql
 
