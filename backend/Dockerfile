@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.6
 
 RUN pip install django==1.9.7
 RUN pip install django-extensions
@@ -6,6 +6,9 @@ RUN pip install djangorestframework
 RUN pip install markdown
 RUN pip install django-filter
 RUN pip install django-rest-swagger
+
+# for postgres
+RUN pip install psycopg2
 
 RUN mkdir -p /opt/api/
 COPY ./calorie_find /opt/api

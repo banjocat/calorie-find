@@ -4,9 +4,19 @@ services:
         build: ./backend/.
         depends_on:
             - db
-        command: bash -c "./manage.py makemigrations && ./manage.py migrate && ./manage.py loaddata food_calorie && ./manage.py runserver 0.0.0.0:8000"
+        command: bash -c "./manage.py runserver 0.0.0.0:8000"
         volumes:
             - ./backend/calorie_find:/opt/api
+    migrate:
+        build: ./backend/.
+        depends_on:
+            - db
+        command: bash -c "./manage.py makemigrations && ./manage.py migrate"
+    fixture:
+        build: ./backend/.
+        depends_on:
+            - db
+        command: bash -c "./manage.py loaddata food_calorie"
     db:
         image: postgres:9.5
         environment:
