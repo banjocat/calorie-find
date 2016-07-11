@@ -1,0 +1,15 @@
+version: '2'
+services:
+    backend:
+        build: ./backend/.
+        depends_on:
+            - db
+        command: bash -c "./manage.py makemigrations && ./manage.py migrate && ./manage.py loaddata food_calorie && ./manage.py runserver 0.0.0.0:8000"
+        volumes:
+            - ./backend/calorie_find:/opt/api
+    db:
+        image: postgres:9.5
+        environment:
+            - POSTGRES_USER=food
+            - POSTGRES_PASSWORD=food
+

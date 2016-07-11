@@ -1,7 +1,8 @@
 DATAZIP=sr28abbr.zip
 URL=https://www.ars.usda.gov/SP2UserFiles/Place/12354500/Data/SR/SR28/dnload
+TARGET=./backend/calorie_find/calories/fixtures/food.json
 
-all: food_calorie.json
+all: ${TARGET}
 
 data.txt: 
 	echo "Getting data!"
@@ -14,6 +15,10 @@ data.txt:
 
 food_calorie.json: data.txt
 	python to_fixture.py data.txt
+
+${TARGET}: food_calorie.json
+	cp food_calorie.json ${TARGET}
+
 
 clean:
 	rm -rf data.txt

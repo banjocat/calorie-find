@@ -1,3 +1,5 @@
 *.pyc
 food_calorie.json
 data.txt
+food.json
+sqlite3.db

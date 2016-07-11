@@ -14,9 +14,9 @@ This is primarly a learning project
 * Read ASCII data file into database for calorie data
 * 1 API endpoint to send list of data
 * User can put in multiple measurement types
+* If multiple matches or mispelling send multiple options in JSON
 
 ### Extra credit
-* If multiple matches or mispelling send multiple options in JSON
 * UPC support
 
 ### Tech used
