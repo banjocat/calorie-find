@@ -4,6 +4,31 @@
 Is a RESTFUL API that finds calorie counts of food
 This is primarly a learning project
 
+### How to develop on
+http://www.pyinvoke.org/ is used for tasks - very similar to fabric
+To see all tasks.
+
+    invoke -l
+
+To start the database in the background
+
+    invoke db
+
+
+Next migrate and fixture data
+
+    invoke migrate
+    invoke fixture
+
+
+Then start up the backend in the foreground
+
+    invoke backend
+
+To run other manage commands on a running django backend
+
+    invoke manage shell_plus
+
 
 ### Requirements
 * Docker compose for development

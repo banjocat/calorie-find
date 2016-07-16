@@ -13,4 +13,6 @@ RUN pip install psycopg2
 RUN mkdir -p /opt/api/
 COPY ./calorie_find /opt/api
 WORKDIR /opt/api/
+COPY ./wait-for-it.sh /tmp/.
+EXPOSE 8000
 
