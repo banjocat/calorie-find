@@ -14,7 +14,7 @@ If this is your first time setting it up
     invoke setup
 
 This will get the calorie data, create postgres, migrate and add fixture data.
-Running this multiple times will just refresh the process. Only needed if you want a fresh database
+Running this multiple times will destroy the database and reset everything.
 
 To start up the backend
 
