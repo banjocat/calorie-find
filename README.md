@@ -9,10 +9,7 @@ http://www.pyinvoke.org/ is used for tasks - very similar to fabric
 
     sudo pip install invoke
 
-If this is your first time setting it up
-
-    invoke setup
-
+If this is your first time use `invoke setup`
 This will get the calorie data, create postgres, migrate and add fixture data.
 Running this multiple times will destroy the database and reset everything.
 
