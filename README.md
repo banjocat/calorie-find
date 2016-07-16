@@ -7,28 +7,31 @@ This is primarly a learning project
 ### How to develop on
 http://www.pyinvoke.org/ is used for tasks - very similar to fabric
 
-To see all tasks.
+    sudo pip install invoke
 
-    invoke -l
+If this is your first time setting it up
 
-To start the database in the background
+    invoke setup
 
-    invoke db
+This will get the calorie data, create postgres, migrate and add fixture data.
+Running this multiple times will just refresh the process. Only needed if you want a fresh database
 
-
-Next migrate and fixture data
-
-    invoke migrate
-    invoke fixture
-
-
-Then start up the backend in the foreground
+To start up the backend
 
     invoke backend
 
-To run other manage commands on a running django backend
+To run other manage commands on a running django backend. This requires the backend to actually be running.
 
+Examples:
     invoke manage shell_plus
+    invoke manage makemigrations
+
+
+To see remaining tasks that may be useful
+
+    invoke -l
+
+
 
 
 ### Requirements

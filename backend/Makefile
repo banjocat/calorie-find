@@ -1,6 +1,6 @@
 DATAZIP=sr28abbr.zip
 URL=https://www.ars.usda.gov/SP2UserFiles/Place/12354500/Data/SR/SR28/dnload
-TARGET=./backend/calorie_find/calories/fixtures/food.json
+TARGET=./calorie_find/calories/fixtures/food.json
 
 all: ${TARGET}
 
