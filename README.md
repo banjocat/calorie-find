@@ -5,28 +5,24 @@ Is a RESTFUL API that finds calorie counts of food
 This is primarly a learning project
 
 ### How to develop on
-http://www.pyinvoke.org/ is used for tasks - very similar to fabric
-
-    sudo pip install invoke
+http://www.pyinvoke.org/ is used for tasks - very similar to fabric `sudo pip install invoke`
 
 If this is your first time use `invoke setup`
 This will get the calorie data, create postgres, migrate and add fixture data.
 Running this multiple times will destroy the database and reset everything.
 
-To start up the backend
-
-    invoke backend
+To start up the backend `invoke backend`
 
 To run other manage commands on a running django backend. This requires the backend to actually be running.
 
 Examples:
+
     invoke manage shell_plus
     invoke manage makemigrations
+    invoke manage migrate
 
 
-To see remaining tasks that may be useful
-
-    invoke -l
+To see remaining tasks that may be useful invoke -l. An alternative is `docker-compose` can be used directly.
 
 
 
