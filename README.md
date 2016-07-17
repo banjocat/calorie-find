@@ -5,7 +5,7 @@ Is a RESTFUL API that finds calorie counts of food
 This is primarly a learning project
 
 ### How to develop on
-http://www.pyinvoke.org/ is used for tasks - very similar to fabric `sudo pip install invoke`
+http://www.pyinvoke.org/ is used for tasks - very similar to fabric. To install: `sudo pip install invoke`
 
 If this is your first time use `invoke setup`
 This will get the calorie data, create postgres, migrate and add fixture data.
