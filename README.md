@@ -22,7 +22,7 @@ Examples:
     invoke manage migrate
 
 
-To see remaining tasks that may be useful invoke -l. An alternative is `docker-compose` can be used directly.
+To see remaining tasks that may be useful `invoke -l`. An alternative is `docker-compose` can be used directly.
 
 
 
