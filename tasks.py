@@ -37,5 +37,19 @@ def backend(ctx):
     '''
     ctx.run('docker-compose up backend')
 
+@task
+def test(ctx, args=''):
+    '''
+    Run tests
+    '''
+    manage_instance(ctx, './manage.py test %s' % args)
+
+@task
+def clean(ctx):
+    '''
+    Cleans instances
+    '''
+    ctx.run("docker rm $(docker ps -a | awk '/Exited/ {print $1}')")
+
 
 
