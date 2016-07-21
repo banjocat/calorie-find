@@ -39,7 +39,7 @@ To see remaining tasks that may be useful `invoke -l`. An alternative is `docker
 * If multiple matches or mispelling send multiple options in JSON
 
 ### Extra credit
-* UPC support
+* UPC support (required to make it a "real" project)
 
 ### Tech used
 * django
