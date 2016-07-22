@@ -11,3 +11,5 @@ class Food(models.Model):
     def __str__(self):
         return "{0}: {1} calories".format(self.name, self.calories)
 
+
+
