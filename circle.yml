@@ -15,6 +15,5 @@ dependencies:
 
 test:
     override:
-        - invoke setup
-        - invoke manage test
+        - docker-compose run backend bash -c "/tmp/wait-for-it.sh -h db -p 5432 && ./manage.py test"
 
