@@ -1,4 +1,5 @@
 # In Development
+[![CircleCI](https://circleci.com/gh/banjocat/calorie-find/tree/master.svg?style=svg)](https://circleci.com/gh/banjocat/calorie-find/tree/master)
 
 # Calorie find 
 Is a RESTFUL API that finds calorie counts of food
