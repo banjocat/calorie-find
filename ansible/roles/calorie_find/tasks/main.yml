@@ -1,0 +1,31 @@
+---
+
+- name: Login into dockerhub
+  docker_login:
+      username: "{{docker_user}}"
+      password: "{{docker_password}}"
+      email: "{{docker_email}}"
+  tags:
+      - deploy
+
+
+- name: Add compose
+  copy:
+      src: ./files/docker-compose.yml
+      dest: /tmp/.
+  tags:
+      - deploy
+
+- name: Remove old compose
+  docker_service:
+      project_src: /tmp/.
+      state: absent
+      remove_images: all
+  tags:
+      - deploy
+
+- name: Run staging compose
+  docker_service:
+      project_src: /tmp/.
+  tags:
+      - deploy

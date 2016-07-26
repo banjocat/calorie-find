@@ -3,3 +3,7 @@ food_calorie.json
 data.txt
 food.json
 db.sqlite3
+*.log
+*.retry
+.vagrant
+docker_env.yml
