@@ -9,7 +9,6 @@ machine:
 dependencies:
     pre:
         - pip install ansible
-        - pip install invoke
         - pip install docker-compose
         - docker info
 
