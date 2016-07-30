@@ -17,7 +17,7 @@ food_calorie.json: data.txt
 	python to_fixture.py data.txt
 
 ${TARGET}: food_calorie.json
-	cp food_calorie.json ${TARGET}
+	mv food_calorie.json ${TARGET}
 
 
 clean:

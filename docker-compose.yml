@@ -11,7 +11,7 @@ services:
         ports: 
             - "8000:8000"
     db:
-        image: postgres:9.5
+        image: postgres:9
         environment:
             - POSTGRES_USER=food
             - POSTGRES_PASSWORD=food

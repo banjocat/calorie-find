@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:2
 
 RUN pip install django==1.9.7
 RUN pip install django-extensions
@@ -14,5 +14,4 @@ RUN mkdir -p /opt/api/
 COPY ./calorie_find /opt/api
 WORKDIR /opt/api/
 COPY ./wait-for-it.sh /tmp/.
-EXPOSE 8000
 
