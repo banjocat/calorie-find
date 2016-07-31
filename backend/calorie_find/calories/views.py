@@ -1,25 +1,39 @@
-from django.shortcuts import render
+import logging
+
 from rest_framework import serializers
 from calories.models import Food
 from rest_framework.views import APIView
-from rest_framework import generics
 from rest_framework.response import Response
-from django.db.models import Q
+from rest_framework.renderers import JSONRenderer
+
 
 # Create your views here.
+class FoodSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('pk', 'name', 'calories')
+        model = Food
 
-class CalorieRequestSerializer(serializers.Serializer):
-    foods = serializers.ListField(child=serializers.CharField())
+
+class FoodListSerializer(serializers.Serializer):
+    foods = serializers.ListField(child=FoodSerializer(many=True))
     class Meta:
         fields = ('foods')
 
 
 
-
-class CalorieView(generics.ListAPIView):
-    def get(self, request):
+class CalorieView(APIView):
+    def post(self, request, format='json'):
         '''
         Accepts list of food for calorie look up
         '''
-        serializer = CalorieRequestSerializer()
-        return Response(serializer.data)
+        food_querysets = {"foods": []}
+        for food in request.data['foods']:
+            q = Food.objects.filter(name__icontains=food)
+            food_querysets['foods'].append(q)
+
+        logging.debug("Querysets %s" % food_querysets)
+        serializer = FoodListSerializer(food_querysets)
+        logging.debug("Serializer data %s" %  serializer.data)
+        json = JSONRenderer().render(serializer.data)
+        logging.debug('Json %s' % json)
+        return Response(json)
