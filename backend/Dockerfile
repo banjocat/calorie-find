@@ -5,7 +5,7 @@ RUN pip install django-extensions
 RUN pip install djangorestframework
 RUN pip install markdown
 RUN pip install django-filter
-RUN pip install django-rest-swagger
+RUN pip install django-rest-swagger==0.3.2
 
 # for postgres
 RUN pip install psycopg2

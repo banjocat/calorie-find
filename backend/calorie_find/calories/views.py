@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 
 
+
 # Create your views here.
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,9 +23,19 @@ class FoodListSerializer(serializers.Serializer):
 
 
 class CalorieView(APIView):
+    '''
+    Returns a list of food with calories
+    '''
     def post(self, request, format='json'):
         '''
-        Accepts list of food for calorie look up
+        ---
+        description: A list of foods to find calories for
+        parameters:
+            - name: Foods
+              required: true
+              type: array
+              items:
+                type: 'string'
         '''
         food_querysets = {"foods": []}
         for food in request.data['foods']:
@@ -37,3 +48,5 @@ class CalorieView(APIView):
         json = JSONRenderer().render(serializer.data)
         logging.debug('Json %s' % json)
         return Response(json)
+
+
