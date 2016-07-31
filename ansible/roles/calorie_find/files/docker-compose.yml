@@ -9,7 +9,7 @@ services:
         volumes:
             - ./backend/calorie_find:/opt/api
         ports: 
-            - "8000:8000"
+            - "8020:8000"
     db:
         image: postgres:9.5
         environment:
