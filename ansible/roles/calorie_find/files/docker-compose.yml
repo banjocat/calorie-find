@@ -5,9 +5,7 @@ services:
         image: banjocat/calorie_find:latest
         depends_on:
             - db
-        command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && ./manage.py runserver 0.0.0.0:8000"
-        volumes:
-            - ./backend/calorie_find:/opt/api
+        command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && python ./manage.py runserver 0.0.0.0:8000"
         ports: 
             - "8020:8000"
     db:
