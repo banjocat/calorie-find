@@ -3,13 +3,11 @@ machine:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   services:
     - docker
-  python:
-      version: 2.7.11
 
 dependencies:
     pre:
-        - pip install ansible
-        - pip install docker-compose
+        - sudo pip install ansible
+        - sudo pip install docker-compose
         - docker info
 
 
