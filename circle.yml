@@ -8,7 +8,6 @@ dependencies:
     pre:
         - sudo pip install ansible
         - sudo pip install docker-compose
-        - docker info
 
 
 test:
