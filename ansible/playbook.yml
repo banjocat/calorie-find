@@ -9,5 +9,10 @@
       - python
       - docker
       - compose
-      - calorie_find
+      - role: calorie_find
+        image: "banjocat/calorie_find:latest"
+        db_name: calorie_find_db
+        postgres_user: food
+        postgres_pass: food
+        port: 8020
 

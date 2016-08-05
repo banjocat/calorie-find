@@ -10,12 +10,19 @@
 
 
 - name: Add compose
-  copy:
-      src: ./files/docker-compose.yml
-      dest: /tmp/.
+  template:
+      src: ./templates/docker-compose.yml
+      dest: /tmp/docker-compose.yml
   tags:
       - deploy
 
+- name: Get latest image - {{image}}
+  docker_image:
+      name: "{{image}}"
+      state: present
+      force: yes
+  tags:
+      - deploy
 
 - name: Run staging compose
   docker_service:
@@ -24,3 +31,5 @@
       project_src: /tmp/.
   tags:
       - deploy
+
+

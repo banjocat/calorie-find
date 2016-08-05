@@ -2,16 +2,16 @@
 version: '2'
 services:
     backend:
-        image: banjocat/calorie_find:latest
+        image: {{image}}
         depends_on:
             - db
         command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && python ./manage.py runserver 0.0.0.0:8000"
         ports: 
-            - "8020:8000"
+            - "{{port}}:8000"
     db:
         image: postgres:9.5
-        container_name: calorie_find_db
+        container_name: {{db_name}}
         environment:
-            - POSTGRES_USER=food
-            - POSTGRES_PASSWORD=food
+            - POSTGRES_USER={{postgres_user}}
+            - POSTGRES_PASSWORD={{postgres_pass}}
 
