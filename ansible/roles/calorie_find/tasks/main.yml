@@ -16,16 +16,11 @@
   tags:
       - deploy
 
-- name: Remove old compose
-  docker_service:
-      project_src: /tmp/.
-      state: absent
-      remove_images: all
-  tags:
-      - deploy
 
 - name: Run staging compose
   docker_service:
+      build: true
+      recreate: smart
       project_src: /tmp/.
   tags:
       - deploy

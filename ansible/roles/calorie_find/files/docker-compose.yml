@@ -10,6 +10,7 @@ services:
             - "8020:8000"
     db:
         image: postgres:9.5
+        container_name: calorie_find_db
         environment:
             - POSTGRES_USER=food
             - POSTGRES_PASSWORD=food
