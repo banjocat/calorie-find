@@ -29,13 +29,12 @@ class CalorieView(APIView):
     def post(self, request, format='json'):
         '''
         ---
-        description: A list of foods to find calories for
         parameters:
-            - name: Foods
-              required: true
+            - name: foods
+              required: false
               type: array
               items:
-                type: 'string'
+                type: string
         '''
         food_querysets = {"foods": []}
         for food in request.data['foods']:
