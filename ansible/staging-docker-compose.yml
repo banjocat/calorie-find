@@ -1,0 +1,19 @@
+
+version: '2'
+services:
+    backend:
+        image: {{image}}
+        extends:
+            file: common.yml
+            service: backend
+        depends_on:
+            - db
+        ports: 
+            - "{{port}}:8000"
+    db:
+        image: postgres:9
+        container_name: {{db_name}}
+        environment:
+            - POSTGRES_USER={{postgres_user}}
+            - POSTGRES_PASSWORD={{postgres_pass}}
+

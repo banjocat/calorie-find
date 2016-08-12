@@ -11,7 +11,7 @@
 
 - name: Add compose
   template:
-      src: ./templates/docker-compose.yml
+      src: docker-compose.yml
       dest: /tmp/docker-compose.yml
   tags:
       - deploy
@@ -19,7 +19,6 @@
 - name: Get latest image - {{image}}
   docker_image:
       name: "{{image}}"
-      state: present
       force: yes
   tags:
       - deploy
@@ -27,7 +26,6 @@
 - name: Run staging compose
   docker_service:
       build: true
-      recreate: smart
       project_src: /tmp/.
   tags:
       - deploy
