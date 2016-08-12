@@ -3,8 +3,6 @@
 - hosts: calorie_find
   gather_facts: no
   become: yes
-  vars_files:
-      - ./vars/docker_env.yml
   roles:
       - python
       - docker
