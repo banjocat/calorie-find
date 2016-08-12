@@ -46,3 +46,7 @@ To see remaining tasks that may be useful `invoke -l`. An alternative is `docker
 * django
 * postgresql
 
+
+### Vagrant
+Vagrant is used for ansible deploy testing. It is not required for general development
+
