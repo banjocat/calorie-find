@@ -26,5 +26,8 @@
 - name: Install docker-py
   pip: name=docker-py
 
+- name: Install compose
+  pip: name=docker-compose
+
 - name: Start docker
   service: name=docker state=started

@@ -6,7 +6,6 @@
   roles:
       - python
       - docker
-      - compose
       - role: calorie_find
         image: "banjocat/calorie_find:latest"
         db_name: calorie_find_db
