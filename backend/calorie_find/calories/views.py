@@ -36,6 +36,7 @@ class CalorieView(APIView):
               items:
                 type: string
         '''
+        logging.debug('Start of CalorieView')
         food_querysets = {"foods": []}
         for food in request.data['foods']:
             q = Food.objects.filter(name__icontains=food)
@@ -46,6 +47,7 @@ class CalorieView(APIView):
         logging.debug("Serializer data %s" %  serializer.data)
         json = JSONRenderer().render(serializer.data)
         logging.debug('Json %s' % json)
+        logging.debug('End of CalorieView')
         return Response(json)
 
 

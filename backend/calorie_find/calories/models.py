@@ -8,6 +8,10 @@ class Food(models.Model):
     name = models.CharField(max_length=100)
     calories = models.FloatField()
 
+    @classmethod
+    def create(cls, name, calories):
+        Food(name=name, calories=calories).save()
+
     def __str__(self):
         return "{0}: {1} calories".format(self.name, self.calories)
 
