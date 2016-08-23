@@ -4,8 +4,7 @@ from rest_framework import serializers
 from calories.models import Food
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
-
+from rest_framework.renderers import JSONRenderer 
 
 
 # Create your views here.
@@ -31,12 +30,15 @@ class CalorieView(APIView):
         ---
         parameters:
             - name: foods
-              required: false
+              required: true
+              description: An array of food to lookup for calories
               type: array
-              items:
-                type: string
+        responses:
+            200:
+                description: Lookup done
         '''
         logging.debug('Start of CalorieView')
+        logging.debug('Sent', request)
         food_querysets = {"foods": []}
         for food in request.data['foods']:
             q = Food.objects.filter(name__icontains=food)

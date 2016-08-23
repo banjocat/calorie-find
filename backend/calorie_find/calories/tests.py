@@ -75,4 +75,12 @@ class RestTest(TestCase):
         self.assertEquals(10.0, matches[0][0]['calories'])
 
 
+    def test_multiple_none_matches(self):
+        '''
+        An array of non matching foods should return empty array
+        '''
+        matches = self._response(['blueberries', 'strawberries'])
+        self.assertTrue(matches)
+        self.assertEquals(0, len(matches[0]))
+
 
