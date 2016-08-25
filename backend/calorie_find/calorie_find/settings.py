@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tcf!vj3xp6zf5jgbno&1p^hgje&d60qkvi(0%1^zl!r^7g6$^b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 # Should move this to seperate file eventually
 if 'debug' in os.environ:
-    DEBUG = True
     logging.basicConfig(level=logging.DEBUG)
 else:
     logging.basicConfig(level=logging.FATAL)
