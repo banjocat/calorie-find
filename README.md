@@ -15,17 +15,18 @@ docker-compose exec backend ./manage.py migrate
 ```
 
 ### Requirements
-* Docker compose for development
-* Django restframework for API
-* Django swagger for docs
-* Ansible and vagrant for deployment simulation
-* circle.yml for test and pushing to
-* Read ASCII data file into database for calorie data
-* 1 API endpoint to send list of data
-* User can put in multiple measurement types
-* If multiple matches or mispelling send multiple options in JSON
+* Docker compose for development (done)
+* Django restframework for API (done)
+* Django swagger for docs 
+* Ansible and vagrant for deployment simulation (done)
+* circle.yml for test and pushing to (done)
+* Read ASCII data file into database for calorie data (done)
+* 1 API endpoint to send list of data (done)
+* If multiple matches or mispelling send multiple options in JSON (multiples)
 
 ### Extra credit
+* Make a basic frontend
+* Figure out way to do lazy matching
 * UPC support (required to make it a "real" project)
 
 ### Tech used
