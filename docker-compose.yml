@@ -11,6 +11,9 @@ services:
             - ./backend/calorie_find:/opt/api
         ports: 
             - "8020:8000"
+        environment:
+            - debug=yes
+
     # Setups database
     fixture:
         build: ./backend/.
