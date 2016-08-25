@@ -1,6 +1,6 @@
 *.pyc
 data.txt
-food.json
+food_calorie.json
 db.sqlite3
 *.log
 *.retry

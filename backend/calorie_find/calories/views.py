@@ -5,6 +5,7 @@ from calories.models import Food
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer 
+from django.http import Http404
 
 
 # Create your views here.
@@ -38,7 +39,9 @@ class CalorieView(APIView):
                 description: Lookup done
         '''
         logging.debug('Start of CalorieView')
-        logging.debug('Sent', request)
+        if not request or not request.data:
+            raise Http404
+        logging.debug('Sent: ' + str(request.data))
         food_querysets = {"foods": []}
         for food in request.data['foods']:
             q = Food.objects.filter(name__icontains=food)

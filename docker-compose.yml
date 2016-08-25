@@ -11,6 +11,19 @@ services:
             - ./backend/calorie_find:/opt/api
         ports: 
             - "8020:8000"
+    # Setups database
+    fixture:
+        build: ./backend/.
+        image: banjocat/calorie_find:latest
+        depends_on:
+            - db
+        command: |
+            bash -c "\
+            /tmp/wait-for-it.sh -h db -p 5432 && \
+            ./manage.py makemigrations && \
+            ./manage.py migrate && \
+            ./manage loaddata calories/fixtures/food.json"
+
     db:
         image: postgres:9
         environment:
