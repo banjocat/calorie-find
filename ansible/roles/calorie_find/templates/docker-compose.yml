@@ -14,4 +14,17 @@ services:
         environment:
             - POSTGRES_USER={{postgres_user}}
             - POSTGRES_PASSWORD={{postgres_pass}}
+    fixture:
+        image: {{image}}
+        container_name: {{db_name}}_fixture
+        depends_on:
+            - db
+        command: |
+            bash -c "\
+            /tmp/wait-for-it.sh -h db -p 5432 && \
+            ./manage.py makemigrations && \
+            ./manage.py migrate && \
+            ./manage.py loaddata calories/fixtures/food.json && \
+            echo Database migrations done!!"
+
 

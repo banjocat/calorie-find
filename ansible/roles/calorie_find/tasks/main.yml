@@ -11,7 +11,7 @@
 
 - name: Add compose
   template:
-      src: docker-compose.yml
+      src: ./templates/docker-compose.yml
       dest: /tmp/docker-compose.yml
   tags:
       - deploy
@@ -23,9 +23,12 @@
   tags:
       - deploy
 
+
 - name: Run staging compose
   docker_service:
       build: true
+      recreate: always
+      restarted: yes
       project_src: /tmp/.
   tags:
       - deploy
