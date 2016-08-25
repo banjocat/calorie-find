@@ -22,7 +22,7 @@ services:
             /tmp/wait-for-it.sh -h db -p 5432 && \
             ./manage.py makemigrations && \
             ./manage.py migrate && \
-            ./manage loaddata calories/fixtures/food.json"
+            ./manage.py loaddata calories/fixtures/food.json"
 
     db:
         image: postgres:9
