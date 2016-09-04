@@ -29,7 +29,7 @@ class CalorieView(APIView):
             raise Http404
         food_querysets = {"foods": []}
         for food in request.data.get('foods'):
-            q = Food.objects.filter(name__icontains=food)
+            q = Food.objects.filter(name__icontains=food)[:5]
             food_querysets['foods'].append(q)
 
         serializer = FoodListSerializer(food_querysets)
