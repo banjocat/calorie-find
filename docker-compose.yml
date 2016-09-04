@@ -13,7 +13,15 @@ services:
             - "8020:8000"
         environment:
             - debug=yes
-
+    frontend:
+        build: ./frontend/.
+        image: banjocat/calorie_find_frontend:latest
+        volumes:
+            - ./frontend/html/:/usr/share/nginx/html
+        ports:
+            - "8000:80"
+        depends_on:
+            - backend
     # Setups database
     fixture:
         build: ./backend/.

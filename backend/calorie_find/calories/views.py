@@ -1,4 +1,3 @@
-import logging
 
 from rest_framework import serializers
 from calories.models import Food
@@ -27,32 +26,15 @@ class CalorieView(APIView):
     Returns a list of food with calories
     '''
     def post(self, request, format='json'):
-        '''
-        ---
-        parameters:
-            - name: foods
-              required: true
-              description: An array of food to lookup for calories
-              type: array
-        responses:
-            200:
-                description: Lookup done
-        '''
-        logging.debug('Start of CalorieView')
         if not request or not request.data:
             raise Http404
-        logging.debug('Sent: ' + str(request.data))
         food_querysets = {"foods": []}
-        for food in request.data['foods']:
+        for food in request.data.get('foods'):
             q = Food.objects.filter(name__icontains=food)
             food_querysets['foods'].append(q)
 
-        logging.debug("Querysets %s" % food_querysets)
         serializer = FoodListSerializer(food_querysets)
-        logging.debug("Serializer data %s" %  serializer.data)
         json = JSONRenderer().render(serializer.data)
-        logging.debug('Json %s' % json)
-        logging.debug('End of CalorieView')
         return Response(json)
 
 
