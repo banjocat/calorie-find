@@ -25,6 +25,14 @@
       - deploy
 
 
+- name: Get latest image - {{image_frontend}}
+  docker_image:
+      name: "{{image_frontend}}"
+      force: yes
+  tags:
+      - deploy
+
+
 - name: Run staging compose
   docker_service:
       build: true
