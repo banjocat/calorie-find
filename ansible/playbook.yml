@@ -8,6 +8,7 @@
       - docker
       - role: calorie_find
         image: "banjocat/calorie_find:latest"
+        image_frontend: "banjocat/calorie_find_frontend:latest"
         db_name: calorie_find_db
         postgres_user: food
         postgres_pass: food
