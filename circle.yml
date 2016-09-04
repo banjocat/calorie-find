@@ -24,5 +24,6 @@ deployment:
         commands:
             - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
             - docker push banjocat/calorie_find
+            - docker push banjocat/calorie_find_frontend
             - ansible-playbook -i ./ansible/staging_inventory.ini -u root --tags "deploy" --extra-vars="docker_user=$DOCKER_USER docker_password=$DOCKER_PASS docker_email=$DOCKER_EMAIL" ./ansible/playbook.yml
 

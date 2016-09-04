@@ -9,8 +9,6 @@ services:
         command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && ./manage.py runserver 0.0.0.0:8000"
         volumes:
             - ./backend/calorie_find:/opt/api
-        ports: 
-            - "8020:8000"
         environment:
             - debug=yes
     frontend:
@@ -35,7 +33,6 @@ services:
             ./manage.py migrate && \
             ./manage.py loaddata calories/fixtures/food.json && \
             echo Database migrations done!!"
-
     db:
         image: postgres:9
         environment:

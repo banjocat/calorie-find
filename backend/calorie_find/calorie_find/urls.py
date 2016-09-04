@@ -19,5 +19,4 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^api/v1/calories/', include('calories.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^docs/', include('rest_framework_swagger.urls')),
 ]

@@ -20,7 +20,6 @@ class FoodListSerializer(serializers.Serializer):
         fields = ('foods')
 
 
-
 class CalorieView(APIView):
     '''
     Returns a list of food with calories
