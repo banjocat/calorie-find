@@ -37,6 +37,9 @@ $(document).ready(function() {
         });
         console.log('Sending', data);
 
+        if (!data)
+            return;
+
         $.ajax('/api/v1/calories/', {
             data: JSON.stringify(data),
             contentType: 'application/json',
