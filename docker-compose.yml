@@ -34,7 +34,7 @@ services:
             ./manage.py loaddata calories/fixtures/food.json && \
             echo Database migrations done!!"
     db:
-        image: postgres:9
+        image: banjocat/calorie_find_db:latest
         build: ./db/.
         environment:
             - POSTGRES_USER=food
