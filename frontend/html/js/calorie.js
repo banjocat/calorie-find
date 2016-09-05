@@ -3,7 +3,7 @@ $(document).ready(function() {
     var template = `
     <div class="row food">
     <div class="six columns">
-    <input class="u-full-width" type="text" placeholder="Enter food">
+    <input class="u-full-width food-item" type="text" placeholder="Enter food">
     </div>
     <button class='remove-food'>Delete</button>
     </div>
@@ -19,7 +19,7 @@ $(document).ready(function() {
     }
 
     function clear_all() {
-        $('#results').children().remove();
+        $('#results').html('');
         $('form').children().remove();
         add_food();
     }
@@ -32,17 +32,22 @@ $(document).ready(function() {
         $('.food-item').each((index, html) => {
             let food = $(html).val();
             if (food) {
+                console.log('Adding', food);
                 data.foods.push(food);
             }
         });
-        console.log('Sending', data);
 
         if (!data)
             return;
 
-        $.ajax('/api/v1/calories/', {
+        let json_data = JSON.stringify(data);
+        console.log('Sending', json_data);
+
+        $.ajax({
+            url: '/api/v1/calories/',
             data: JSON.stringify(data),
-            contentType: 'application/json',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             type: 'POST',
             success: (result) => {
                 let json = JSON.parse(result);

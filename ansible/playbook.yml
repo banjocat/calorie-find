@@ -9,6 +9,7 @@
       - role: calorie_find
         image: "banjocat/calorie_find:latest"
         image_frontend: "banjocat/calorie_find_frontend:latest"
+        image_db: "banjocat/calorie_find_db:latest"
         db_name: calorie_find_db
         postgres_user: food
         postgres_pass: food

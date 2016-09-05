@@ -35,6 +35,7 @@ services:
             echo Database migrations done!!"
     db:
         image: postgres:9
+        build: ./db/.
         environment:
             - POSTGRES_USER=food
             - POSTGRES_PASSWORD=food

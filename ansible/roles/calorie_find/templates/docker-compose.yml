@@ -7,7 +7,7 @@ services:
             - db
         command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && python ./manage.py runserver 0.0.0.0:8000"
     db:
-        image: postgres:9.5
+        image: {{image_db}}
         container_name: {{db_name}}
         environment:
             - POSTGRES_USER={{postgres_user}}
