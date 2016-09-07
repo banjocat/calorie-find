@@ -3,6 +3,7 @@ version: '2'
 services:
     backend:
         image: {{image}}
+        container_name: food_backend
         depends_on:
             - db
         command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && python ./manage.py runserver 0.0.0.0:8000"
@@ -14,6 +15,7 @@ services:
             - POSTGRES_PASSWORD={{postgres_pass}}
     frontend:
         image: {{image_frontend}}
+        container_name: food_frontend
         depends_on:
             - backend
         ports:
