@@ -8,45 +8,27 @@
   tags:
       - deploy
 
+- name: Add tmp directory
+  file:
+      path: /tmp/food_calorie
+      state: directory
+  tags:
+      - deploy
 
 - name: Add compose
   template:
       src: ./templates/docker-compose.yml
-      dest: /tmp/docker-compose.yml
+      dest: /tmp/food_calorie/docker-compose.yml
   tags:
       - deploy
 
-
-- name: Get latest image - {{image}}
-  docker_image:
-      name: "{{image}}"
-      force: yes
-  tags:
-      - deploy
-
-
-- name: Get latest image - {{image_frontend}}
-  docker_image:
-      name: "{{image_frontend}}"
-      force: yes
-  tags:
-      - deploy
-
-- name: Get latest image - {{image_db}}
-  docker_image:
-      name: "{{image_db}}"
-      force: yes
-  tags:
-      - deploy
 
 
 
 - name: Run staging compose
   docker_service:
-      build: true
-      recreate: always
-      restarted: yes
-      project_src: /tmp/.
+      build: yes
+      project_src: /tmp/food_calorie/
   tags:
       - deploy
 
