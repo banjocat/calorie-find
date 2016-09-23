@@ -1,12 +1,5 @@
 ---
 
-- name: Login into dockerhub
-  docker_login:
-      username: "{{docker_user}}"
-      password: "{{docker_password}}"
-      email: "{{docker_email}}"
-  tags:
-      - deploy
 
 - name: Add tmp directory
   file:
@@ -23,7 +16,12 @@
       - deploy
 
 
-
+- name: Bring down compose until ansible 2.2 for pull
+  docker_service:
+      state: absent
+      project_src: /tmp/food_calorie/
+  tags:
+      - deploy
 
 - name: Run staging compose
   docker_service:

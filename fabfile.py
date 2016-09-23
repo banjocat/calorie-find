@@ -1,12 +1,12 @@
 from invoke import task
+from fabric.api import local
 
 
-@task
-def deploy(ctx):
+def deploy():
     '''
     Deploys to staging
     '''
-    ctx.run(
+    local(
             'ansible-playbook -i '
             './ansible/staging_inventory.ini '
             '-u root '
