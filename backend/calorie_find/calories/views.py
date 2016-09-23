@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer 
 from django.http import Http404
 from rest_framework.decorators import api_view
+from django.db.models import Q
 
 
 # Create your views here.
@@ -29,8 +30,9 @@ def calories(request):
         raise Http404
     food_querysets = {"foods": []}
     for food in request.data.get('foods'):
-        q = Food.objects.filter(name__fuzzy=food.upper())[:5]
-        food_querysets['foods'].append(q)
+        q = Q(name__icontains=food.upper()) | Q(name__fuzzy=food.upper())
+        result = Food.objects.filter(q)[:5]
+        food_querysets['foods'].append(result)
 
     serializer = FoodListSerializer(food_querysets)
     json = JSONRenderer().render(serializer.data)
