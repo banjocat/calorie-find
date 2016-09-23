@@ -19,7 +19,7 @@ docker-compose exec backend ./manage.py migrate
 ### Requirements
 * ~~Docker compose for development~~
 * ~~Django restframework for API~~
-* Django swagger for docs 
+* Django swagger for docs (swagger couldn't determine the POST schema)
 * ~~Ansible and vagrant for deployment simulation~~
 * ~~circle.yml for test and pushing to~~
 * ~~Read ASCII data file into database for calorie data~~
