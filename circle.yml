@@ -10,7 +10,7 @@ dependencies:
         - sudo pip install --upgrade pip
         - sudo pip install ansible
         - sudo pip install docker-compose
-        - sudo apt-get install fabric
+        - sudo pip install fabric
 
 
 test:
@@ -28,5 +28,5 @@ deployment:
             - docker push banjocat/calorie_find
             - docker push banjocat/calorie_find_frontend
             - docker push banjocat/calorie_find_db
-            - fabric deploy
+            - fab deploy
 
