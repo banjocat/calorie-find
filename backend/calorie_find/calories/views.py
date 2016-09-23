@@ -29,7 +29,7 @@ def calories(request):
         raise Http404
     food_querysets = {"foods": []}
     for food in request.data.get('foods'):
-        q = Food.objects.filter(name__fuzzy=food.upper())
+        q = Food.objects.filter(name__fuzzy=food.upper())[:5]
         food_querysets['foods'].append(q)
 
     serializer = FoodListSerializer(food_querysets)
