@@ -8,6 +8,7 @@
   tags:
       - deploy
 
+
 - name: Add compose
   template:
       src: ./templates/docker-compose.yml
@@ -16,16 +17,14 @@
       - deploy
 
 
-- name: Bring down compose until ansible 2.2 for pull
-  docker_service:
-      state: absent
-      project_src: /tmp/food_calorie/
+- name: Pull images
+  shell: docker-compose -f /tmp/food_calorie/docker-compose.yml pull
   tags:
       - deploy
 
+
 - name: Run staging compose
   docker_service:
-      build: yes
       project_src: /tmp/food_calorie/
   tags:
       - deploy
