@@ -1,4 +1,4 @@
-from fabric.api import env, run, put, hosts, cd
+from fabric.api import env, run, put, hosts, cd, local
 
 env.user = 'root'
 
@@ -13,3 +13,10 @@ def deploy():
         run('docker-compose pull')
         run('docker-compose down')
         run('docker-compose up -d')
+
+
+def test():
+    '''
+    Run manage.py test
+    '''
+    local('docker-compose exec backend ./manage.py test')
