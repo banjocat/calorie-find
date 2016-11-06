@@ -1,20 +1,15 @@
-from fabric.api import local
+from fabric.api import env, run, put, hosts, cd
 
+env.user = 'root'
 
+@hosts('giantgreendinosaur.com')
 def deploy():
     '''
-    Deploys to staging
+    Deploy it
     '''
-    local(
-            'ansible-playbook -i '
-            './ansible/staging_inventory.ini '
-            '-u root '
-            '--tags "deploy" '
-            '--extra-vars="'
-            'docker_user=$DOCKER_USER '
-            'docker_password=$DOCKER_PASS '
-            'docker_email=$DOCKER_EMAIL" '
-            './ansible/playbook.yml')
-
-
-
+    run('mkdir -p /app/caloriefind')
+    put('./production-compose.yml', '/app/caloriefind/docker-compose.yml')
+    with cd('/app/caloriefind'):
+        run('docker-compose pull')
+        run('docker-compose down')
+        run('docker-compose up -d')
