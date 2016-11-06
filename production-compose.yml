@@ -8,19 +8,14 @@ services:
             - db
             - fixture
         command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && python ./manage.py runserver 0.0.0.0:8000"
+        ports:
+            - "8020:8000"
     db:
         image: banjocat/calorie_find_db:latest
         container_name: calorie_find_db
         environment:
             - POSTGRES_USER={{postgres_user}}
             - POSTGRES_PASSWORD={{postgres_pass}}
-    frontend:
-        image: banjocat/calorie_find_frontend:latest
-        container_name: food_frontend
-        depends_on:
-            - backend
-        ports:
-            - "8020:80"
     fixture:
         image: banjocat/calorie_find:latest
         container_name: calorie_find_db_fixture
