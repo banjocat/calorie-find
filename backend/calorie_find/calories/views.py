@@ -1,33 +1,21 @@
-
-from rest_framework import serializers, views
-from calories.models import Food
+from rest_framework import views
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from django.http import Http404
 from django.db.models import Q
 
+from calories.serializers import FoodListSerializer
+from calories.models import Food
+
 
 # Create your views here.
-class FoodSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = ('pk', 'name', 'calories')
-        model = Food
-
-
-class FoodListSerializer(serializers.Serializer):
-    foods = serializers.ListField(child=FoodSerializer(many=True))
-
-    class Meta:
-        fields = ('foods')
-
-
 class CalorieView(views.APIView):
 
     def post(self, request):
         '''
         Returns a list of food with calories
         '''
-        if not request or not request.data:
+        if 'foods' not in request.data:
             raise Http404
         food_querysets = {"foods": []}
         for food in request.data.get('foods'):

@@ -13,7 +13,7 @@ services:
         environment:
             - debug=yes
         ports:
-            - "8888:8000"
+            - "8020:8000"
     # Setups database
     fixture:
         build: ./backend/.
