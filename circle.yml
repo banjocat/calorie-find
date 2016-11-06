@@ -25,7 +25,6 @@ deployment:
         commands:
             - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
             - docker push banjocat/calorie_find
-            - docker push banjocat/calorie_find_frontend
             - docker push banjocat/calorie_find_db
             - fab deploy
 
