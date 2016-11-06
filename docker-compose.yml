@@ -6,20 +6,14 @@ services:
         restart: always
         depends_on:
             - db
+            - fixture
         command: bash -c "/tmp/wait-for-it.sh -h db -p 5432 && ./manage.py runserver 0.0.0.0:8000"
         volumes:
             - ./backend/calorie_find:/opt/api
         environment:
             - debug=yes
-    frontend:
-        build: ./frontend/.
-        image: banjocat/calorie_find_frontend:latest
-        volumes:
-            - ./frontend/html/:/usr/share/nginx/html
         ports:
-            - "8000:80"
-        depends_on:
-            - backend
+            - "8888:8000"
     # Setups database
     fixture:
         build: ./backend/.

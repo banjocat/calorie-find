@@ -3,6 +3,7 @@ FROM python:2
 RUN pip install django==1.9.7
 RUN pip install django-extensions
 RUN pip install djangorestframework
+RUN pip install django-rest-swagger
 
 # for postgres
 RUN pip install psycopg2

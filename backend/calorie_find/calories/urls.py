@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from calories.views import calories
+from calories.views import CalorieView
 
 
 urlpatterns = [
-        url(r'^$', calories)
+        url(r'^$', CalorieView.as_view()),
         ]
