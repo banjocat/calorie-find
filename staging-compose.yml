@@ -16,8 +16,8 @@ services:
         image: banjocat/calorie_find_db:latest
         container_name: calorie_find_db
         environment:
-            - POSTGRES_USER={{postgres_user}}
-            - POSTGRES_PASSWORD={{postgres_pass}}
+            - POSTGRES_USER=food
+            - POSTGRES_PASSWORD=food
     fixture:
         image: banjocat/calorie_find:latest
         container_name: calorie_find_db_fixture
