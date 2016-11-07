@@ -13,3 +13,10 @@ class FoodListSerializer(serializers.Serializer):
 
     class Meta:
         fields = ('foods')
+
+
+class FoodRequestSerializer(serializers.Serializer):
+    '''
+    Used for getting data
+    '''
+    foods = serializers.CharField()

@@ -4,12 +4,15 @@ from rest_framework.renderers import JSONRenderer
 from django.http import Http404
 from django.db.models import Q
 
-from calories.serializers import FoodListSerializer
+from calories.serializers import FoodListSerializer, FoodRequestSerializer
 from calories.models import Food
 
 
-# Create your views here.
 class CalorieView(views.APIView):
+
+    def get_serializer(self,):
+        serializer = FoodRequestSerializer()
+        return serializer
 
     def post(self, request):
         '''
