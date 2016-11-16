@@ -2,12 +2,12 @@ version: '1.0'
 steps:
     build-backend:
         type: build
-        working-directory: ${{clone-step-name}}/backend
+        working-directory: ./backend/.
         image-name: banjocat/calorie_find
         tag: latest
     build-db:
         type: build
-        working-directory: ${{clone-step-name}}/backend
+        working-directory: ./db/.
         image-name: banjocat/calorie_find_db
         tag: latest
 
