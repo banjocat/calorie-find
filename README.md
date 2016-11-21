@@ -5,9 +5,6 @@
 Is a RESTFUL API that finds calorie counts of food.
 This is primarly a learning project to get me use of use django with docker.
 
-My progress can be seen at http://www.giantgreendinosaur.com:8020 (assuming I have it up at this time) 
-It uses swagger to show the API.
-
 ### How to develop on
 `docker-compose -up`
 
